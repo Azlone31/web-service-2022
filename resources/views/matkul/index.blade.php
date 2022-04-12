@@ -4,12 +4,12 @@
 
 <div class="row mt-4">
     <div class="col-12">
-        <div class="card">
+        <div class="card border-primary">
             <div class="card-header">Data Soal
-                <a class="btn btn-sm btn-primary float-right" href="{{ route('Soal.create') }}">Tambah</a>
+                <a class="btn btn-sm float-end btn-primary" href="{{ route('Soal.create') }}" >Tambah</a>
             </div>
             <div class="card-body">
-                <table class="table table-bordered">
+                <table class="table table-bordered border-primary">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -28,7 +28,13 @@
                             <td>{{ $datas->dosen }}</td>
                             <td>{{ $datas->jumlah_soal }}</td>
                             <td>{{ $datas->keterangan }}</td>
-                            <td></td>
+                            <td>
+                                <form action="{{ route('delete.soal', $datas->id) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin ?')">Hapus</button>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

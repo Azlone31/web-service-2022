@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SoalController;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,5 @@ Route::get('/Soal', 'App\Http\Controllers\SoalController@index');
 Route::get('/Soal/create', 'App\Http\Controllers\SoalController@create')->name('Soal.create');
 
 Route::post('/Soal/store', 'App\Http\Controllers\SoalController@store')->name('Soal.store');
+
+Route::delete('delete-soal/{id}', [App\Http\Controllers\SoalController::class, 'destroy'])->name('delete.soal');
